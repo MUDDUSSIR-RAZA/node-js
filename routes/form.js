@@ -1,17 +1,14 @@
 const express = require("express");
 const router = express.Router();
+const path = require("path")
 
 router.get("/", (req, res) => {
-    res.send(`  
-    <form action="/form/submit" method="POST">
-    <input name="data"/>
-    <button>Submit</button>
-    </form>
+    res.send(` 
 `)
 })
 
 router.post("/submit" , (req, res) => {
-    res.send(req.body);
+    res.sendFile(path.join(process.cwd() , views , form.html));
 })
 
 module.exports = router;
