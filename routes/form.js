@@ -1,14 +1,13 @@
 const express = require("express");
 const router = express.Router();
-const path = require("path")
+const path = require("path");
 
 router.get("/", (req, res) => {
-    res.send(` 
-`)
+    res.sendFile(path.join(process.cwd(), "views", "form.html"))
 })
 
-router.post("/submit" , (req, res) => {
-    res.sendFile(path.join(process.cwd() , views , form.html));
+router.post("/submit", (req, res) => {
+    res.send(req.body.data);
 })
 
 module.exports = router;
