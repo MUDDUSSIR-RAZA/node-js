@@ -3,11 +3,11 @@ const router = express.Router();
 const path = require("path");
 
 router.get("/", (req, res) => {
-    res.sendFile(path.join(process.cwd(), "views", "form.html"))
+    res.render("form" ,{user : req.query.name || "user"})
 })
 
 router.post("/submit", (req, res) => {
-    res.send(req.body.data);
+    res.send(req.body.data2);
 })
 
 module.exports = router;
