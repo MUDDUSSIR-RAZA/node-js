@@ -17,6 +17,7 @@ app.use((req, res, next) => {
     next();
 })
 
+app.use("/" , form);
 app.use("/form" , form);
 app.use("/todo" , todo);
 
