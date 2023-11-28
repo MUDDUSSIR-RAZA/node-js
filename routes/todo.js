@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { addTodo, getAlltodos} = require("../controllers/todo");
+const {deleteTodo , addTodo, getAlltodos} = require("../controllers/todo");
 
 router.get("/" , (req ,res) => {
     res.render("todo" , {todos : getAlltodos()});
@@ -8,8 +8,15 @@ router.get("/" , (req ,res) => {
 
 router.post("/add" , (req ,res) => {
     addTodo(req.body.data);
-    res.send("Todo Added");
+    res.redirect("/todo");
 })
+
+router.get("/delete/:id", (req, res) => {
+    const { id } = req.params;
+    deleteTodo({ _id: id });
+    res.redirect("/todo");
+});
+
 
 
 module.exports = router;
