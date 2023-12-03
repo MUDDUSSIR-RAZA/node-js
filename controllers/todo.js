@@ -1,14 +1,14 @@
-const { v4: uuidv4 } = require('uuid');
+const { v4: uuidv4 } = require("uuid");
 
 const todos = [];
 
 const addTodo = (name) => {
-  todos.push({ name, done: false , id:todos.length });
+  todos.push({ name, done: false, id: uuidv4() });
 };
 
-const deleteTodo = (index) => {
-  console.log("deleted");
-  todos.splice(index,1);
+const deleteTodo = (id) => {
+  let idIndex = findById(id);
+  todos.splice(idIndex,1);
   return true;
 };
 
@@ -17,14 +17,18 @@ const markAsDone = (index) => {
   return true;
 };
 
-
 const getAlltodos = () => {
-    return todos;
-}
+  return todos;
+};
+
+const findById = (id) => {
+  let idIndex = todos.findIndex((t) => t.id == id);
+  return idIndex;
+};
 
 module.exports = {
-    getAlltodos,
-    addTodo,
-    deleteTodo,
-    markAsDone,
-}
+  getAlltodos,
+  addTodo,
+  deleteTodo,
+  markAsDone,
+};
