@@ -12,7 +12,7 @@
         <ul>
             <% for(var i = 0 ; i < todos.length ; i++) { %>
             <li>
-                <input type="checkbox" name="checkbox" data-id="<%= todos[i].id %>" id="other" name="interest" <% if (todos[i].done) { %>checked<% } %>>
+                <input type="checkbox" name="checkbox" data-id="<%= todos[i].id %>" class="other" name="interest" <% if (todos[i].done) { %>checked<% } %>>
                 <%= todos[i].name %>
                 <br>
                 <a href="/todo/delete/<%= todos[i].id %>">delete</a>
