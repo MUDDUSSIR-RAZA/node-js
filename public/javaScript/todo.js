@@ -1,13 +1,28 @@
-const otherCheckbox = document.querySelector("#other");
+const checkboxes = document.querySelectorAll(".other");
 
-otherCheckbox.addEventListener("change", () => {
-  //const todoId = checkbox.getAttribute("data-id");
 
-  console.log(otherCheckbox.checked);
+checkboxes.forEach((checkbox) => {
+  checkbox.addEventListener("change", function () {
+    var todoId = checkbox.getAttribute("data-id");
+    var isChecked = checkbox.checked;
+   // console.log("id : " + todoId + " ischeck : " + isChecked);
 
-  // if (otherCheckbox.checked) {
-  //   console.log("change");
-  // } else {
-  //   console.log("not change");
-  // }
+   requestUpdate(todoId , isChecked)
+  });
 });
+
+const requestUpdate = async (todoId , isChecked) => {
+  try {
+    const response = await fetch("/todo/check/" +todoId , {
+      method: "POST",
+      body: JSON.stringify({
+        done :isChecked 
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+  } catch (error) {
+    throw("Error deleting Blog: " + error.message);
+  }
+};
