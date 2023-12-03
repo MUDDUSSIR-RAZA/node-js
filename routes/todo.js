@@ -17,6 +17,13 @@ router.get("/delete/:id", (req, res) => {
     res.redirect("/todo");
 });
 
+router.get("/check/:id", (req, res) => {
+    const { id } = req.params;
+    const check = req.body.data;
+    
+   console.log("id : " + id + " ischeck : " + check);
+});
+
 
 
 module.exports = router;
