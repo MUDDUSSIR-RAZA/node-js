@@ -16,6 +16,8 @@
                 <%= todos[i].name %>
                 <br>
                 <a href="/todo/delete/<%= todos[i].id %>">delete</a>
+                <br>
+                <a href="/todo/todoUpdate/<%=todos[i].id%>">Update</a>
             </li>
             <% } %>
         </ul>
